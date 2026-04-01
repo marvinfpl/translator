@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/main.css">
+    <script src="static/main.js" defer></script>
+    <title> Jarvis Translator </title>
+</head>
+<body>
+    <div id="title">
+        <img src="static/logo.avif" alt="">
+        <h3 id="name"> Jarvis.ai </h3>
+    </div>
+
+    <br>
+
+    <div id="center">
+        <div>
+            <h1> Live Translate </h1>
+            <p> Generate translated captions and audio in real-time! </p>
+        </div>
+    
+        <hr>
+
+        <br>
+
+        <div>
+
+            <div id="mode">
+                <button id="transcribe" class="btn"> Transcribe </button>
+                <button id="translate" class="btn active"> Translate </button>
+                <button id="dubbing" class="btn"> Dubbing </button>
+            </div>
+
+            <br>
+
+            <div>
+                <select name="from_language" id="from_language">
+                    <option value="en" selected > English </option>
+                    <option value="fr"> French </option>
+                    <option value="sp"> Spanish </option>
+                </select>
+                -> 
+                <select name="to_language" id="to_language">
+                    <option value="en"> English </option>
+                    <option value="fr" selected > French </option>
+                    <option value="sp"> Spanish </option>
+                </select>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div>
+                <div class="bubble">
+                    <p> Press and start talking </p>
+                </div>
+                <button id="record" class="ripple-btn"> Record </button>
+                <audio id="audioPlayback" controls style="display: none;"></audio>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <hr>
+
+        <br>
+        <br>
+        <br>
+
+        <div>
+            <h1> Debugging, Model Response </h1>
+            <p id="debug"> No translation occuring... </p>
+        </div>
+
+
+    </div>
+    
+</body>
+</html>

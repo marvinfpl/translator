@@ -1,0 +1,125 @@
+:root {
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+}
+
+#name {
+    font-size: 30px;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: lightblue;;
+}
+
+p {
+    color: gray;
+}
+
+#name {
+    display: inline;
+}
+
+#center {
+    text-align: center;
+}
+
+button, select {
+    border: 1px solid lightblue;
+    border-radius: 8px;
+    height: 50px;
+    width: 150px;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+button:hover, select:hover {
+    transition: 0.5s;
+    background-color: #D3E3E8;
+}
+
+.active {
+    border: 1px solid #3399FF;
+    color: #3399FF;
+    background-color: #D3E3E8;
+}
+
+select {
+    height: 50px;
+    width: 150px;
+    letter-spacing: 1px;
+}
+
+.bubble p {
+    color: #3399FF;
+}
+
+/*
+.bubble {
+    background: lightblue;
+    border: 2px solid blue;
+    border-radius: 20px;
+    width: max-content;
+}
+
+.bubble::after {
+    content: "";
+    bottom: 0;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border: 2px solid blue;
+    border-top-color: lightblue;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -5px;
+    margin-bottom: -10px;
+}
+*/
+
+/*
+.ripple-btn {
+    animation: growAndFade 3s infinite ease-out;
+    background-color: lightsalmon;
+    animation-delay: 1s;
+}
+
+@keyframes growAndfade {
+    0% {
+        opacity: .25;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+    */
+
+#record {
+    border-radius: 100%;
+    height: 80px;
+    width: 80px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    background-color: rgb(237, 110, 110);
+    color: white;
+    border-color: red;
+}
+
+#record:hover { /* add transition*/
+    transition: 0.5s;
+    transform: scaleX(1.05) scaleY(1.05);
+}
