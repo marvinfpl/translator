@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/main.css">
-    <script src="static/main.js" defer></script>
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="stylesheet" href="/static/main.css?v={{ time() }}">
+    <script src="/static/main.js?v={{ time() }}" defer></script>
     <title> Jarvis Translator </title>
 </head>
 <body>
     <div id="title">
-        <img src="static/logo.avif" alt="">
+        <img src="/static/image/logo.avif">
         <h3 id="name"> Jarvis.ai </h3>
     </div>
 
@@ -57,7 +57,7 @@
                 <div class="bubble">
                     <p> Press and start talking </p>
                 </div>
-                <button id="record" class="ripple-btn"> Record </button>
+                <button id="recordButton">Record</button>
                 <audio id="audioPlayback" controls style="display: none;"></audio>
             </div>
         </div>
@@ -72,9 +72,12 @@
         <br>
         <br>
 
+            <input type="text" name="translation" id="translation">
+            <button id="formButton" type="button">Translate</button>
+
         <div>
-            <h1> Debugging, Model Response </h1>
-            <p id="debug"> No translation occuring... </p>
+            <h1>Debugging, Model Response</h1>
+            <p id="debug">No translation occuring...</p>
         </div>
 
 
