@@ -4,16 +4,14 @@ import soundfile as sf
 import subprocess
 import numpy as np
 
-device = 0 if torch.backends.mps.is_available() else -1
-
-text2speech = pipeline('text-to-speech', model='facebook/mms-tts-fra', device=device)
+text2speech = pipeline('text-to-speech', model='facebook/mms-tts-fra')
 
 feature_extractor = WhisperFeatureExtractor(sampling_rate=16000)
-speech2text = pipeline('automatic-speech-recognition', model='openai/whisper-base', chunk_length_s=30, device=device, feature_extractor=feature_extractor)
+speech2text = pipeline('automatic-speech-recognition', model='openai/whisper-base', chunk_length_s=30, feature_extractor=feature_extractor)
 
 model_name = 'Helsinki-NLP/opus-mt-en-fr'
 tokenizer = MarianTokenizer.from_pretrained(model_name)
-model = MarianMTModel.from_pretrained(model_name).to('mps')
+model = MarianMTModel.from_pretrained(model_name)
 
 
 #llm_name = 'mpt-7b-instruct'
@@ -27,7 +25,7 @@ def audio_to_text(audio_path: str) -> str:
     
 def translator_model(text: str) -> str:
     text = ">>fr<< " + text
-    inputs = tokenizer(text, return_tensors='pt').to('mps')
+    inputs = tokenizer(text, return_tensors='pt')
     translated = model.generate(**inputs)
     return tokenizer.decode(translated[0], skip_special_tokens=True)
 

@@ -6,6 +6,7 @@ from model.translator import translator_model, audio_to_text, text_to_audio, con
 import uvicorn
 import os
 import logging
+from config import AUDIO_DIR
 
 logging.basicConfig(filename='server.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s.')
 log = logging.getLogger('server.log')
@@ -21,6 +22,10 @@ app.add_middleware(
 )
 
 app.mount('/static', StaticFiles(directory='static'), name='static')
+
+@app.get('/health')
+def health():
+    return {'status': 'ok'}
 
 @app.post('/logger')
 async def logger(request: Request):
@@ -50,8 +55,8 @@ async def render_jarvis():
     
 app.post('/audio_test')
 async def audio_test():
-    output_wav = 'static/audio/test.wav'
-    test_flac = 'static/audio/test/121123/84-121123-0000.flac'
+    output_wav = AUDIO_DIR / 'test.wav'
+    test_flac = AUDIO_DIR / 'test/121123/84-121123-0000.flac'
 
     convert_flac_to_wav(test_flac, output_wav)
 
@@ -59,7 +64,7 @@ async def audio_test():
         text = audio_to_text(output_wav)
         translation = translator_model(text)
 
-        output_path = 'static/audio/output.wav'
+        output_path = AUDIO_DIR / 'output.wav'
         text_to_audio(translation, output_path)
 
     except Exception as e:
@@ -70,8 +75,8 @@ async def audio_test():
     
 @app.post('/audio_translate')
 async def audio_translate(file: UploadFile = File(...)):
-    input_webm = 'static/audio/input.webm'
-    output_wav = 'static/audio/input.wav'
+    input_webm = AUDIO_DIR / 'input.webm'
+    output_wav = AUDIO_DIR / 'input.wav'
     
     with open(input_webm, 'wb') as buffer:
         buffer.write(await file.read())
@@ -91,7 +96,7 @@ async def audio_translate(file: UploadFile = File(...)):
 
         log.info(f'text: {text}, translation: {translation}')
 
-        output_path = 'static/audio/output.wav'
+        output_path = AUDIO_DIR / 'output.wav'
         text_to_audio(translation, output_path)
 
         log.info('text to audio is done')
@@ -105,7 +110,7 @@ async def audio_translate(file: UploadFile = File(...)):
 
 @app.delete('/delete_audio')
 async def audio_delete():
-    path = 'static/audio/output.wav'
+    path = AUDIO_DIR / 'output.wav'
     if os.path.exists(path):
         os.remove(path)
     return {"status": "deleted"}

@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+transformers
+torch
+torchaudio
+sentencepiece
+accelerate
+ffmpeg-python
+soundfile
+python-multipart
+sacremoses
