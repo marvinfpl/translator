@@ -113,7 +113,7 @@ select {
 }
     */
 
-#recordButton {
+#recordButton, #stopButton {
     background-color: red !important;
     color: white !important;
     border-radius: 50% !important;
@@ -124,6 +124,11 @@ select {
 }
 
 #recordButton:hover {
+    transform: scale(1.1) !important;
+    background-color: darkred !important;
+}
+
+#stopButton:hover {
     transform: scale(1.1) !important;
     background-color: darkred !important;
 }
